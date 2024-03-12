@@ -13,32 +13,30 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style lang="scss" scoped>
-  .header{
-    position: fixed;
-    right: 30px;
-    bottom: 30px;
+.header {
+  position: fixed;
+  right: 2vw;
+  bottom: 2vw;
 
-    h1{
-      font-size: 0;
-    }
+  h1 {
+    font-size: 0;
+  }
 
-    nav{
-      ul{
-        display: flex;
-        align-content: center;
-        justify-content: center;
+  nav {
+    ul {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-        li{
-          margin: 0 10px;
-          font-size: 1vw;
-        }
+      li {
+        margin: 0 1vw;
+        font-size: 1vw;
       }
     }
   }
+}
 </style>
