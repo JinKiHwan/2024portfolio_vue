@@ -1,0 +1,28 @@
+@use '../helpers/' as *;
+
+article {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+}
+
+section {
+  width: 100%;
+
+  @include labtop {
+    aspect-ratio: auto;
+    width: 100%;
+    height: 100vh;
+  }
+}
+
+.inner {
+  width: 100%;
+  height: 100%;
+  @include flex;
+}
