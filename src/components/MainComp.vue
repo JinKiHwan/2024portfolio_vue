@@ -12,6 +12,7 @@
                 <img src="/src/assets/logo.png" alt="" />
             </div>
         </div>
+        <h2>test</h2>
     </section>
 </template>
 
