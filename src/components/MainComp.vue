@@ -21,6 +21,7 @@ export default {
         this.makeImagesDraggable();
     },
     methods: {
+        /* 이미지 드래그 */
         makeImagesDraggable() {
             const images = this.$el.querySelectorAll('.sticker-box img');
 
