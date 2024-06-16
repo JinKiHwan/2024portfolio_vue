@@ -9,7 +9,6 @@
                 <li><a href="#!">Menu4</a></li>
             </ul>
         </nav>
-        <h2>abc</h2>
     </header>
 </template>
 
@@ -22,6 +21,7 @@ export default {};
     position: fixed;
     right: 2vw;
     bottom: 2vw;
+    z-index: 9;
 
     h1 {
         font-size: 0;
