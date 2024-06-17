@@ -19,29 +19,32 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-import { animateSkills } from '../assets/js/gsap';
+import gsap from 'gsap';
 
 export default {
     name: 'SkilComp',
-    setup() {
-        const skils = ref([
-            { skilName: 'vue', skilImg: '/src/assets/logo.png', skilTxt: '쀼를 이용한 프로젝트' },
-            { skilName: 'html', skilImg: '/src/assets/logo.png', skilTxt: '시멘틱태그 ㅎㅎ' },
-            { skilName: 'scss', skilImg: '/src/assets/logo.png', skilTxt: 'css는 scss로 관리해용' },
-            { skilName: 'React', skilImg: '/src/assets/logo.png', skilTxt: 'React real kk' },
-            { skilName: 'Figma', skilImg: '/src/assets/logo.png', skilTxt: 'Figma Magma' },
-        ]);
-
-        onMounted(() => {
-            const listItems = document.querySelectorAll('.skil_list li');
-            animateSkills(listItems);
-        });
-
+    data() {
         return {
-            skils,
+            skils: [
+                { skilName: 'vue', skilImg: '/src/assets/logo.png', skilTxt: '쀼를 이용한 프로젝트' },
+                { skilName: 'html', skilImg: '/src/assets/logo.png', skilTxt: '시멘틱태그 ㅎㅎ' },
+                { skilName: 'scss', skilImg: '/src/assets/logo.png', skilTxt: 'css는 scss로 관리해용' },
+                { skilName: 'React', skilImg: '/src/assets/logo.png', skilTxt: 'React real kk' },
+                { skilName: 'Figma', skilImg: '/src/assets/logo.png', skilTxt: 'Figma Magma' },
+            ],
         };
     },
+
+    mounted: function () {
+        gsap.set('.skil_list li', { opacity: 0, y: 150 });
+        gsap.to('.skil_list li', {
+            opacity: 1,
+            y: 0,
+            stagger: 0.5,
+        });
+    },
+
+    methods: {},
 };
 </script>
 
