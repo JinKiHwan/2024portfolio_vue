@@ -1,21 +1,17 @@
 <template>
-    <section class="main_section">
+    <section class="main_section" id="main">
         <div class="main_section-inner">
             <ul class="main_section-text">
-                <li>DEVELOPER</li>
-                <li>publisher</li>
-                <li>frontend</li>
-                <li>design</li>
+                <li v-for="(item, index) in items" :key="index" :data-text="item.dataText" :class="{ glitch: isGlitched[index] }" @mouseover="addGlitch(index)" @mouseleave="removeGlitch(index)">
+                    {{ item.dataText }}
+                </li>
             </ul>
             <div class="sticker-box">
-                <img src="/src/assets/logo.png" alt="" />
-                <img src="/src/assets/logo.png" alt="" />
-                <img src="/src/assets/logo.png" alt="" />
-                <img src="/src/assets/logo.png" alt="" />
-                <img src="/src/assets/logo.png" alt="" />
-                <img src="/src/assets/logo.png" alt="" />
-                <img src="/src/assets/logo.png" alt="" />
-                <img src="/src/assets/logo.png" alt="" />
+                <img src="/src/assets/img/figma.png" alt="" />
+                <img src="/src/assets/img/git.png" alt="" />
+                <img src="/src/assets/img/jquery.png" alt="" />
+                <img src="/src/assets/img/sass.png" alt="" />
+                <img src="/src/assets/img/react.png" alt="" />
             </div>
         </div>
     </section>
@@ -23,6 +19,12 @@
 
 <script>
 export default {
+    data() {
+        return {
+            items: [{ dataText: '<developer>' }, { dataText: '[publisher]' }, { dataText: '{{frontend}}' }, { dataText: '#design' }],
+            isGlitched: [],
+        };
+    },
     mounted() {
         this.makeImagesDraggable();
     },
@@ -54,6 +56,16 @@ export default {
                 });
             });
         },
+        addGlitch(index) {
+            // Ensure the array is long enough to hold the value
+            this.$data.isGlitched[index] = true;
+            this.isGlitched = [...this.isGlitched]; // Trigger reactivity
+        },
+        removeGlitch(index) {
+            // Ensure the array is long enough to hold the value
+            this.$data.isGlitched[index] = false;
+            this.isGlitched = [...this.isGlitched]; // Trigger reactivity
+        },
     },
 };
 </script>
@@ -62,7 +74,6 @@ export default {
 .main_section {
     width: 100%;
     height: 100vh;
-    background: #ddd;
     overflow: hidden;
     position: relative;
     font-family: 'EF_MACHO';
@@ -76,21 +87,21 @@ export default {
     }
 
     &-text {
-        width: 80vw;
+        width: 60vw;
         margin: 0 auto;
         height: 80vh;
         text-transform: uppercase;
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: 5vw;
-        font-size: 5vw;
+        gap: 2.5vw;
+        font-size: 3.5vw;
         font-weight: 600;
 
         li {
-            background: #ff0;
             display: inline-block;
             padding: 1vw;
+            position: relative;
         }
         li:nth-child(odd) {
             margin-right: auto;
@@ -102,9 +113,31 @@ export default {
 
     .sticker-box img {
         position: absolute;
-        left: 30px;
-        top: 50px;
         cursor: move;
+        max-width: 350px;
+
+        &:nth-child(1) {
+            left: 33vw;
+            bottom: 0;
+        }
+        &:nth-child(2) {
+            left: 10vw;
+            top: 7vw;
+        }
+        &:nth-child(3) {
+            right: 8vw;
+            bottom: 12vw;
+        }
+
+        &:nth-child(4) {
+            left: 5vw;
+            bottom: 3vw;
+        }
+
+        &:nth-child(5) {
+            right: 5vw;
+            top: 0vw;
+        }
     }
 }
 </style>

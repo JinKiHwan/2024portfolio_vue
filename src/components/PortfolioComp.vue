@@ -1,5 +1,5 @@
 <template>
-    <section class="portfolio">
+    <section class="portfolio" id="portfolio">
         <div class="portfolio_inner">
             <ul class="portfolio_list">
                 <li v-for="(portfolio, index) in portfolios" :key="index">
@@ -39,6 +39,7 @@ export default {
                     skills: ['React', 'Node', 'Scss'],
                     logo: '/src/assets/img/logo.webp',
                     alt: '쿠키런 브레이버스 1',
+                    href: '#',
                 },
                 {
                     year: '2022',
@@ -47,6 +48,7 @@ export default {
                     skills: ['Vue3', 'Jquery', 'Scss'],
                     logo: '/src/assets/img/logo.webp',
                     alt: '쿠키런 브레이버스 2',
+                    href: '#',
                 },
                 {
                     year: '2021',
@@ -55,6 +57,7 @@ export default {
                     skills: ['Jquery', 'Scss'],
                     logo: '/src/assets/img/logo.webp',
                     alt: '쿠키런 브레이버스 3',
+                    href: '#',
                 },
                 {
                     year: '2020',
@@ -63,6 +66,7 @@ export default {
                     skills: ['Php', 'Jquery', 'Scss'],
                     logo: '/src/assets/img/logo.webp',
                     alt: '쿠키런 브레이버스 4',
+                    href: '#',
                 },
                 {
                     year: '2020',
@@ -71,6 +75,7 @@ export default {
                     skills: ['Vue', 'Jquery', 'Scss'],
                     logo: '/src/assets/img/logo.webp',
                     alt: '쿠키런 브레이버스 5',
+                    href: '#',
                 },
             ],
         };
@@ -82,6 +87,7 @@ export default {
 .portfolio {
     min-height: 100vh;
     height: auto;
+    //padding-top: 5vw;
     &_inner {
         width: 100%;
     }
@@ -90,9 +96,14 @@ export default {
             width: 100%;
             min-height: 200px;
             padding: 30px;
-            position: relative;
             background: #f1f1f1;
-            border: 1px solid #000;
+            border-bottom: 1px solid #000;
+            position: sticky;
+            top: 0;
+            box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.3);
+            a {
+                position: relative;
+            }
         }
 
         .bedge_list {
@@ -102,7 +113,7 @@ export default {
             li {
                 padding: 5px;
                 background: #ddd;
-                font-size: 1.8vw;
+                font-size: 1.2vw;
             }
         }
     }
