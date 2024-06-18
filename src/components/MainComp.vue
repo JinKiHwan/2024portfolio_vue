@@ -96,11 +96,14 @@ export default {
             const design = gsap.utils.toArray('.design i');
             let tl = gsap.timeline({ repeat: -1 });
 
-            tl.to(at, {
-                x: 0,
-                rotate: 0,
-                opacity: 1,
+            tl.set([at, flower, circle, star], {
+                opacity: 0,
             })
+                .to(at, {
+                    x: 0,
+                    rotate: 0,
+                    opacity: 1,
+                })
                 .to(design, {
                     color: '#ebe5aa',
                     x: '0.3vw',
@@ -272,6 +275,7 @@ export default {
                     opacity: 0;
                     img {
                         width: 100%;
+                        pointer-events: none;
                     }
                 }
             }
