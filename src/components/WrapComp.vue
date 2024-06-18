@@ -5,12 +5,12 @@
     <SkilComp></SkilComp>
     <MainComp></MainComp>
     <div class="sticker-box" ref="stickerBox">
-        <img src="/src/assets/img/figma.png" alt="" />
-        <img src="/src/assets/img/git.png" alt="" />
-        <img src="/src/assets/img/jquery.png" alt="" />
-        <img src="/src/assets/img/sass.png" alt="" />
-        <img src="/src/assets/img/react.png" alt="" />
-        <img src="/src/assets/img/vue2.png" alt="" />
+        <img src="../assets/img/figma.png" alt="" />
+        <img src="../assets/img/git.png" alt="" />
+        <img src="../assets/img/jquery.png" alt="" />
+        <img src="../assets/img/sass.png" alt="" />
+        <img src="../assets/img/react.png" alt="" />
+        <img src="../assets/img/vue2.png" alt="" />
     </div>
 </template>
 

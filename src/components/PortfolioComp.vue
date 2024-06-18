@@ -18,7 +18,7 @@
                             </div>
 
                             <div class="portfolio_logo">
-                                <img src="/src/assets/img/logo.webp" alt="쿠키런 브레이버스" />
+                                <img src="../assets/img/logo.webp" alt="쿠키런 브레이버스" />
                             </div>
                         </div>
                     </a>

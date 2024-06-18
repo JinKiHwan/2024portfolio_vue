@@ -5,7 +5,7 @@
                 <li v-for="(skil, index) in skils" :key="index" @click="animate">
                     <div class="skil_wrap">
                         <div class="front">
-                            <figure><img src="/src/assets/logo.png" alt="" /></figure>
+                            <figure><img src="../assets/logo.png" alt="" /></figure>
                             <h3>{{ skil.skilName }}</h3>
                         </div>
                         <div class="back">

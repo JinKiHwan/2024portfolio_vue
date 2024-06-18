@@ -7,9 +7,9 @@
                 <li class="frontend"><span>&#123;&#123;</span><i>f</i><i>r</i><i>o</i><i>n</i><i>t</i><i>e</i><i>n</i><i>d</i><span>&#125;&#125;</span></li>
                 <li class="design">
                     <span class="at">@</span>
-                    <span class="flower"><img src="/src/assets/img/flower.svg" alt="" /></span>
-                    <span class="circle"><img src="/src/assets/img/circle.png" alt="" /></span>
-                    <span class="star"><img src="/src/assets/img/star.svg" alt="" /></span>
+                    <span class="flower"><img src="../assets/img/flower.svg" alt="" /></span>
+                    <span class="circle"><img src="../assets/img/circle.png" alt="" /></span>
+                    <span class="star"><img src="../assets/img/star.svg" alt="" /></span>
                     <i>d</i><i>e</i><i>s</i><i>i</i><i>g</i><i>n</i>
                 </li>
             </ul>
