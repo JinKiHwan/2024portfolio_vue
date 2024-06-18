@@ -1,23 +1,14 @@
 <template>
-    <HeaderComp></HeaderComp>
-    <MainComp></MainComp>
-    <PortComp></PortComp>
-    <SkilComp></SkilComp>
+    <WrapComp></WrapComp>
 </template>
 
 <script>
-import HeaderComp from './components/HeaderComp.vue';
-import MainComp from './components/MainComp.vue';
-import PortComp from './components/PortfolioComp.vue';
-import SkilComp from './components/SkilComp.vue';
+import WrapComp from './components/WrapComp.vue';
 
 export default {
     name: 'App',
     components: {
-        HeaderComp,
-        MainComp,
-        PortComp,
-        SkilComp,
+        WrapComp,
     },
 };
 </script>
@@ -25,7 +16,8 @@ export default {
 <style lang="scss">
 #app {
     //height: 300vh;
-    background: #ddd;
+    position: relative;
+    background: #0e100f;
 
     &::after {
         content: '';

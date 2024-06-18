@@ -36,6 +36,7 @@ export default {};
             li {
                 margin: 0 1vw;
                 font-size: 1vw;
+                color: $text-df;
             }
         }
     }

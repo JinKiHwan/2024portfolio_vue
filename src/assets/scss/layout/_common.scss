@@ -1,5 +1,12 @@
 @use '../helpers/' as *;
 
+body {
+    overflow-x: hidden;
+}
+*::selection {
+    background-color: #148a35 !important;
+    color: $text-df !important;
+}
 article {
     width: 100%;
     height: 100%;

@@ -2,69 +2,195 @@
     <section class="main_section" id="main">
         <div class="main_section-inner">
             <ul class="main_section-text">
-                <li v-for="(item, index) in items" :key="index" :data-text="item.dataText" :class="{ glitch: isGlitched[index] }" @mouseover="addGlitch(index)" @mouseleave="removeGlitch(index)">
-                    {{ item.dataText }}
+                <li><span>&#60;</span>devel<i class="o"></i>per<span>&#62;</span></li>
+                <li><span>[</span>publ<i class="i">i</i>sher<span>]</span></li>
+                <li class="frontend"><span>&#123;&#123;</span><i>f</i><i>r</i><i>o</i><i>n</i><i>t</i><i>e</i><i>n</i><i>d</i><span>&#125;&#125;</span></li>
+                <li class="design">
+                    <span class="at">@</span>
+                    <span class="flower"><img src="/src/assets/img/flower.svg" alt="" /></span>
+                    <span class="circle"><img src="/src/assets/img/circle.png" alt="" /></span>
+                    <span class="star"><img src="/src/assets/img/star.svg" alt="" /></span>
+                    <i>d</i><i>e</i><i>s</i><i>i</i><i>g</i><i>n</i>
                 </li>
             </ul>
-            <div class="sticker-box">
-                <img src="/src/assets/img/figma.png" alt="" />
-                <img src="/src/assets/img/git.png" alt="" />
-                <img src="/src/assets/img/jquery.png" alt="" />
-                <img src="/src/assets/img/sass.png" alt="" />
-                <img src="/src/assets/img/react.png" alt="" />
-            </div>
         </div>
     </section>
 </template>
 
 <script>
+import gsap from 'gsap';
+
 export default {
     data() {
-        return {
-            items: [{ dataText: '<developer>' }, { dataText: '[publisher]' }, { dataText: '{{frontend}}' }, { dataText: '#design' }],
-            isGlitched: [],
-        };
+        return {};
     },
-    mounted() {
-        this.makeImagesDraggable();
+    mounted: function () {
+        this.developAni();
+        this.publisherAni();
+        this.frontendAni();
+        this.designAni();
     },
+
     methods: {
-        /* 이미지 드래그 */
-        makeImagesDraggable() {
-            const images = this.$el.querySelectorAll('.sticker-box img');
-
-            images.forEach((img) => {
-                img.style.position = 'absolute';
-
-                img.addEventListener('mousedown', (e) => {
-                    e.preventDefault(); // Prevent text selection or other unwanted behavior
-                    const offsetX = e.clientX - img.getBoundingClientRect().left;
-                    const offsetY = e.clientY - img.getBoundingClientRect().top;
-
-                    const onMouseMove = (e) => {
-                        img.style.left = `${e.clientX - offsetX}px`;
-                        img.style.top = `${e.clientY - offsetY}px`;
-                    };
-
-                    const onMouseUp = () => {
-                        document.removeEventListener('mousemove', onMouseMove);
-                        document.removeEventListener('mouseup', onMouseUp);
-                    };
-
-                    document.addEventListener('mousemove', onMouseMove);
-                    document.addEventListener('mouseup', onMouseUp);
+        developAni() {
+            let o = document.querySelector('i.o');
+            const tl = gsap.timeline({ repeat: -1 });
+            tl.set(o, {
+                rotate: 0,
+                width: '3.6vw',
+            });
+            tl.to(o, {
+                opacity: 1,
+            })
+                .to(o, {
+                    delay: 1,
+                    width: '10vw',
+                })
+                .to(o, {
+                    delay: 3,
+                    width: '3.6vw',
+                })
+                .to(o, {
+                    rotate: 180,
+                    duration: 2,
+                    ease: 'elastic.out(1)',
                 });
+        },
+        publisherAni() {
+            let i = document.querySelector('i.i');
+            const tl = gsap.timeline({ repeat: -1 });
+            tl.to(i, {
+                duration: 5,
+                rotateX: 180,
+                ease: 'elastic.inOut(1,0.3)',
+            }).to(i, {
+                duration: 5,
+                rotateX: 0,
+                ease: 'elastic.inOut(1,0.3)',
             });
         },
-        addGlitch(index) {
-            // Ensure the array is long enough to hold the value
-            this.$data.isGlitched[index] = true;
-            this.isGlitched = [...this.isGlitched]; // Trigger reactivity
+        frontendAni() {
+            let frontend = gsap.utils.toArray('.frontend i');
+            const tl = gsap.timeline({ repeat: -1 });
+            tl.to(frontend, {
+                display: 'none',
+                delay: 1,
+                stagger: {
+                    from: 'end',
+                    amount: 1.5,
+                },
+            }).to(frontend, {
+                delay: 2,
+                display: 'block',
+                stagger: {
+                    from: 'start',
+                    amount: 1.5,
+                },
+            });
         },
-        removeGlitch(index) {
-            // Ensure the array is long enough to hold the value
-            this.$data.isGlitched[index] = false;
-            this.isGlitched = [...this.isGlitched]; // Trigger reactivity
+        designAni() {
+            const at = document.querySelector('.design .at');
+            const flower = document.querySelector('.design .flower');
+            const circle = document.querySelector('.design .circle');
+            const star = document.querySelector('.design .star');
+            const design = gsap.utils.toArray('.design i');
+            let tl = gsap.timeline({ repeat: -1 });
+
+            tl.to(at, {
+                x: 0,
+                rotate: 0,
+                opacity: 1,
+            })
+                .to(design, {
+                    color: '#ebe5aa',
+                    x: '0.3vw',
+                    stagger: 0.1,
+                })
+                .to(at, {
+                    x: '-8vw',
+                    rotate: -150,
+                    opacity: 0,
+                })
+                .to(
+                    design,
+                    {
+                        x: '0',
+                        stagger: 0.1,
+                    },
+                    '<'
+                )
+
+                .to(flower, {
+                    x: 0,
+                    rotate: 0,
+                    opacity: 1,
+                })
+                .to(design, {
+                    color: '#eea3cc',
+                    x: '0.3vw',
+                    stagger: 0.1,
+                })
+                .to(flower, {
+                    x: '-8vw',
+                    rotate: -150,
+                    opacity: 0,
+                })
+                .to(
+                    design,
+                    {
+                        x: '0',
+                        stagger: 0.1,
+                    },
+                    '<'
+                )
+                .to(circle, {
+                    x: 0,
+                    rotate: 0,
+                    opacity: 1,
+                })
+                .to(design, {
+                    color: '#2fbce7',
+                    x: '0.3vw',
+                    stagger: 0.1,
+                })
+                .to(circle, {
+                    x: '-8vw',
+                    rotate: -150,
+                    opacity: 0,
+                })
+                .to(
+                    design,
+                    {
+                        x: '0',
+                        stagger: 0.1,
+                    },
+                    '<'
+                )
+
+                .to(star, {
+                    x: 0,
+                    rotate: 0,
+                    opacity: 1,
+                })
+                .to(design, {
+                    color: '#ff9982',
+                    x: '0.3vw',
+                    stagger: 0.1,
+                })
+                .to(star, {
+                    x: '-8vw',
+                    rotate: -150,
+                    opacity: 0,
+                })
+                .to(
+                    design,
+                    {
+                        x: '0',
+                        stagger: 0.1,
+                        color: '#fffce1',
+                    },
+                    '<'
+                );
         },
     },
 };
@@ -102,41 +228,59 @@ export default {
             display: inline-block;
             padding: 1vw;
             position: relative;
+            color: $text-df;
+            display: flex;
+            align-items: center;
+            perspective: 150px;
+            position: relative;
+
+            span {
+                font-size: 6.5vw;
+                font-weight: 400;
+                display: block;
+            }
+
+            i {
+                display: block;
+                &.o {
+                    margin-left: 0.2vw;
+                    width: 3.6vw;
+                    height: 3.1vw;
+                    border-radius: 10px;
+                    border-top: 0.5vw solid $text-df;
+                    border-left: 0.8vw solid $text-df;
+                    border-right: 0.8vw solid $text-df;
+                    border-bottom: 0.5vw solid $text-df;
+                }
+
+                &.i {
+                    perspective: 100px;
+                    transform-style: preserve-3d;
+                    //transform: rotateX(100deg);
+                }
+            }
+
+            &.design {
+                padding-left: 8vw;
+
+                span {
+                    position: absolute;
+                    width: 7vw;
+                    left: 0;
+                    top: -0.5vw;
+                    transform: translateX(-8vw) rotate(-170deg);
+                    opacity: 0;
+                    img {
+                        width: 100%;
+                    }
+                }
+            }
         }
         li:nth-child(odd) {
             margin-right: auto;
         }
         li:nth-child(even) {
             margin-left: auto;
-        }
-    }
-
-    .sticker-box img {
-        position: absolute;
-        cursor: move;
-        max-width: 350px;
-
-        &:nth-child(1) {
-            left: 33vw;
-            bottom: 0;
-        }
-        &:nth-child(2) {
-            left: 10vw;
-            top: 7vw;
-        }
-        &:nth-child(3) {
-            right: 8vw;
-            bottom: 12vw;
-        }
-
-        &:nth-child(4) {
-            left: 5vw;
-            bottom: 3vw;
-        }
-
-        &:nth-child(5) {
-            right: 5vw;
-            top: 0vw;
         }
     }
 }

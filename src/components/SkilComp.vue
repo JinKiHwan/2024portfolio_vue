@@ -20,6 +20,8 @@
 
 <script>
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
 export default {
     name: 'SkilComp',
@@ -31,37 +33,51 @@ export default {
                 { skilName: 'scss', skilImg: '/src/assets/logo.png', skilTxt: 'css는 scss로 관리해용' },
                 { skilName: 'React', skilImg: '/src/assets/logo.png', skilTxt: 'React real kk' },
                 { skilName: 'Figma', skilImg: '/src/assets/logo.png', skilTxt: 'Figma Magma' },
+                { skilName: 'Slack', skilImg: '/src/assets/logo.png', skilTxt: 'Slack으로 소통해요' },
+                { skilName: 'NEWjeans', skilImg: '/src/assets/logo.png', skilTxt: 'NEWjeans' },
             ],
         };
     },
 
     mounted: function () {
-        gsap.set('.skil_list li', { opacity: 0, y: 150 });
-        gsap.to('.skil_list li', {
-            opacity: 1,
-            y: 0,
-            stagger: 0.5,
-        });
+        this.scrollAnimation();
     },
 
-    methods: {},
+    methods: {
+        scrollAnimation() {
+            let skil = gsap.utils.toArray('.skil_list li');
+
+            gsap.to(skil, {
+                xPercent: -100 * (skil.length - 1),
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: '.skil',
+                    pin: '.skil',
+                    pinSpacing: true,
+                    scrub: 1,
+                    end: '+=3000',
+                },
+            });
+        },
+    },
 };
 </script>
 
 <style lang="scss">
 .skil {
-    overflow: auto;
-    height: 100vh;
+    //height: 100vh;
+    height: auto;
     &_inner {
-        height: 100%;
+        height: 100vh;
         min-height: 50vh;
         display: flex;
         align-items: center;
-        padding: 30px 0;
+        padding: 30px 30vw;
     }
+
     &_list {
         display: flex;
-        gap: 1vw;
+        gap: 5vw;
         li {
             width: 450px;
             aspect-ratio: 1/1;
@@ -79,7 +95,7 @@ export default {
                 align-items: center;
                 justify-content: center;
                 flex-direction: column;
-                background: #fff;
+                background: linear-gradient(180deg, rgba(170, 254, 132, 1) 20%, rgba(27, 194, 208, 1) 100%);
                 z-index: 4;
                 transition: opacity 0.1s 0.1s;
             }
