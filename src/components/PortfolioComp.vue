@@ -20,6 +20,9 @@
                             <div class="portfolio_logo">
                                 <img src="../assets/img/logo.webp" alt="쿠키런 브레이버스" />
                             </div>
+                            <div class="portfolio_shortcut">
+                                <img src="../assets/img/link_arrow.png" alt="" />
+                            </div>
                         </div>
                     </a>
                 </li>
@@ -103,8 +106,31 @@ export default {
             position: sticky;
             top: 0;
             box-shadow: 0 0 10px rgba($color: #fffce1, $alpha: 0.3);
-            a {
+            &:before {
+                content: '';
+                width: 100%;
+                height: 100%;
+                display: block;
+                position: absolute;
+                left: 0;
+                top: 0;
+                background: linear-gradient(180deg, rgba(170, 254, 132, 1) 20%, rgba(27, 194, 208, 1) 100%);
+                transform: scaleY(0);
+                transform-origin: center center;
+                transition: all 0.3s;
+            }
+            > a {
                 position: relative;
+            }
+
+            &:hover {
+                &::before {
+                    transform: scaleY(1);
+                }
+                .portfolio_shortcut {
+                    width: 80px;
+                    transform: scale(1);
+                }
             }
         }
 
@@ -154,7 +180,17 @@ export default {
         align-self: flex-start;
     }
     &_logo {
+        margin-left: auto;
         max-width: 150px;
+    }
+
+    &_shortcut {
+        margin-left: 2vw;
+        width: 0;
+        max-width: 80px;
+        transform: scale(0);
+        transition: all 0.3s;
+        transform-origin: center;
     }
 }
 </style>
