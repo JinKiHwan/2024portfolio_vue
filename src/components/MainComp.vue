@@ -2,8 +2,8 @@
     <section class="main_section" id="main">
         <div class="main_section-inner">
             <ul class="main_section-text">
-                <li><span>&#60;</span>devel<i class="o"></i>per<span>&#62;</span></li>
-                <li><span>[</span>publ<i class="i">i</i>sher<span>]</span></li>
+                <li><span>&#60;</span>dev<i class="e">e</i>l<i class="o"></i>p<i class="e2">e</i>r<span>&#62;</span></li>
+                <li class="publisher"><span>[</span><i>p</i><i>u</i><i>b</i><i>l</i><i>i</i><i>s</i><i>h</i><i>e</i><i>r</i><span>]</span></li>
                 <li class="frontend"><span>&#123;&#123;</span><i>f</i><i>r</i><i>o</i><i>n</i><i>t</i><i>e</i><i>n</i><i>d</i><span>&#125;&#125;</span></li>
                 <li class="design">
                     <span class="at">@</span>
@@ -55,19 +55,75 @@ export default {
                     duration: 2,
                     ease: 'elastic.out(1)',
                 });
+
+            let e = document.querySelector('i.e');
+            let e2 = document.querySelector('i.e2');
+            const tl2 = gsap.timeline({ repeat: -1 });
+
+            tl2.to(e, {
+                rotateX: 180,
+                duration: 5,
+                transformOrigin: 'center center',
+                ease: 'elastic.inOut(1,0.3)',
+            })
+                .to(
+                    e2,
+                    {
+                        rotateY: 180,
+                        duration: 4,
+                        delay: 0.1,
+                        transformOrigin: 'center center',
+                        ease: 'elastic.inOut(1,0.3)',
+                    },
+                    '<'
+                )
+                .to(e, {
+                    duration: 5,
+                    rotateX: 0,
+                    transformOrigin: 'center center',
+                    ease: 'elastic.inOut(1,0.3)',
+                })
+                .to(
+                    e2,
+                    {
+                        rotateY: 0,
+                        duration: 4,
+                        delay: 0.1,
+                        transformOrigin: 'center center',
+                        ease: 'elastic.inOut(1,0.3)',
+                    },
+                    '<'
+                );
         },
         publisherAni() {
-            let i = document.querySelector('i.i');
-            const tl = gsap.timeline({ repeat: -1 });
-            tl.to(i, {
-                duration: 5,
-                rotateX: 180,
-                ease: 'elastic.inOut(1,0.3)',
-            }).to(i, {
-                duration: 5,
-                rotateX: 0,
-                ease: 'elastic.inOut(1,0.3)',
+            let publisher = gsap.utils.toArray('.publisher > *');
+            const disX = gsap.utils.distribute({
+                base: '-5vw',
+                amount: '30vw',
             });
+            const tl = gsap.timeline({
+                repeat: -1, // 무한 반복
+                yoyo: true, // 역재생 후 다시 재생
+                repeatDelay: 1, // 각 반복 사이의 딜레이 시간 (원하는 대로 조정 가능)
+            });
+            tl.to(publisher, {
+                delay: 1,
+                y: gsap.utils.wrap(['2vw', '-2vw']),
+            })
+                .to(publisher, {
+                    y: 0,
+                    stagger: {
+                        amount: 0.3,
+                        each: 0.3,
+                        from: 'random',
+                    },
+                })
+                .to(publisher, {
+                    delay: 1.5,
+                    x: disX,
+                    filter: 'blur(10px)',
+                    opacity: 0,
+                });
         },
         frontendAni() {
             let frontend = gsap.utils.toArray('.frontend i');
@@ -234,7 +290,7 @@ export default {
             color: $text-df;
             display: flex;
             align-items: center;
-            perspective: 150px;
+            perspective: 500px;
             position: relative;
 
             span {
@@ -255,12 +311,6 @@ export default {
                     border-right: 0.8vw solid $text-df;
                     border-bottom: 0.5vw solid $text-df;
                 }
-
-                &.i {
-                    perspective: 100px;
-                    transform-style: preserve-3d;
-                    //transform: rotateX(100deg);
-                }
             }
 
             &.design {
@@ -273,6 +323,7 @@ export default {
                     top: -0.5vw;
                     transform: translateX(-8vw) rotate(-170deg);
                     opacity: 0;
+                    pointer-events: none;
                     img {
                         width: 100%;
                         pointer-events: none;
