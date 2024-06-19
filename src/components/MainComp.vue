@@ -161,8 +161,8 @@ export default {
                     opacity: 1,
                 })
                 .to(design, {
-                    color: '#ebe5aa',
-                    x: '0.3vw',
+                    color: '#fffce1',
+                    x: '1.5vw',
                     stagger: 0.1,
                 })
                 .to(at, {
@@ -185,8 +185,8 @@ export default {
                     opacity: 1,
                 })
                 .to(design, {
-                    color: '#eea3cc',
-                    x: '0.3vw',
+                    color: gsap.utils.wrap(['#eec9e4', '#fcc1e1', '#faadd7', '#fc79c2', '#f95fb3', '#f64eab']),
+                    x: '1.5vw',
                     stagger: 0.1,
                 })
                 .to(flower, {
@@ -208,8 +208,8 @@ export default {
                     opacity: 1,
                 })
                 .to(design, {
-                    color: '#2fbce7',
-                    x: '0.3vw',
+                    color: gsap.utils.wrap(['#ffc5fc', '#d8c3f8', '#9dc1f2', '#7ec0ef', '#52beeb', '#42bde9']),
+                    x: '1.5vw',
                     stagger: 0.1,
                 })
                 .to(circle, {
@@ -232,8 +232,8 @@ export default {
                     opacity: 1,
                 })
                 .to(design, {
-                    color: '#ff9982',
-                    x: '0.3vw',
+                    color: gsap.utils.wrap(['#ffd0c3', '#ffe8e4', '#ffcaba', '#ffb39b', '#ff9982', '#f77432']),
+                    x: '1.5vw',
                     stagger: 0.1,
                 })
                 .to(star, {
