@@ -15,11 +15,8 @@
                 </li>
             </ul>
 
-            <div class="img">
-                <div class="img_wrap">
-                    <img src="../assets/img/img1.png" alt="" class="img1" />
-                    <img src="../assets/img/img2.png" alt="" class="img2" />
-                </div>
+            <div class="phantom">
+                <img src="../assets/img/phantom.png" alt="" />
             </div>
         </div>
     </section>
@@ -48,6 +45,7 @@ export default {
 
     mounted: function () {
         this.scrollAnimation();
+        //this.skilWrap();
     },
 
     methods: {
@@ -59,6 +57,7 @@ export default {
             gsap.to(skil, {
                 xPercent: -100 * (skil.length - 1),
                 ease: 'none',
+
                 scrollTrigger: {
                     trigger: '.skil',
                     pin: '.skil',
@@ -67,44 +66,27 @@ export default {
                     end: '+=3000',
                 },
             });
-
-            let imgWrap = document.querySelector('.img');
-            let img1 = document.querySelector('.img1');
-            let img2 = document.querySelector('.img2');
-
-            let tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: '.skil',
-                    scrub: 1,
-                    markers: true,
-                    start: '50% center',
-                    end: 'bottom top',
-                },
-            });
-
-            tl.to(imgWrap, {
-                x: '-70vw',
-                duration: 3,
-                onUpdate: function () {
-                    gsap.to(imgWrap, {
-                        y: 50,
-                        duration: 1,
-                        yoyo: true,
-                        repeat: -1,
-                        ease: 'power1.inOut',
-                    });
-                },
-
-                onComplete: function () {
-                    gsap.to(img1, {
-                        display: 'none',
-                    });
-                    gsap.to(img2, {
-                        display: 'block',
-                    });
-                },
-            });
         },
+        // skilWrap() {
+        //     let skilWrap = gsap.utils.toArray('.skil_wrap');
+
+        //     gsap.set(skilWrap, {
+        //         scale: 0,
+        //         transformOrigin: 'right bottom',
+        //     });
+
+        //     gsap.to(skilWrap, {
+        //         scale: 1,
+        //         scrollTrigger: {
+        //             scrub: true,
+        //             trigger: '.skil',
+        //             markers: true,
+        //             start: '70% center',
+        //             end: '100% top',
+        //         },
+        //     });
+        //     console.log(skilWrap);
+        // },
     },
 };
 </script>
@@ -120,8 +102,9 @@ export default {
         align-items: center;
         padding: 30px 30vw;
         position: relative;
+        overflow: hidden;
 
-        .img {
+        /* .img {
             position: absolute;
             width: 40vw;
             aspect-ratio: 1/1;
@@ -144,6 +127,18 @@ export default {
                         display: none;
                     }
                 }
+            }
+        } */
+
+        .phantom {
+            position: absolute;
+            z-index: -1;
+            right: -10vw;
+            top: -20vw;
+            //max-height: 100vh;
+            height: 150vh;
+            img {
+                height: 100%;
             }
         }
     }
