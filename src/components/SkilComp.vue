@@ -14,6 +14,13 @@
                     </div>
                 </li>
             </ul>
+
+            <div class="img">
+                <div class="img_wrap">
+                    <img src="../assets/img/img1.png" alt="" class="img1" />
+                    <img src="../assets/img/img2.png" alt="" class="img2" />
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -46,7 +53,9 @@ export default {
     methods: {
         scrollAnimation() {
             let skil = gsap.utils.toArray('.skil_list li');
-
+            gsap.set(skil, {
+                xPercent: 50 * (skil.length - 1),
+            });
             gsap.to(skil, {
                 xPercent: -100 * (skil.length - 1),
                 ease: 'none',
@@ -56,6 +65,43 @@ export default {
                     pinSpacing: true,
                     scrub: 1,
                     end: '+=3000',
+                },
+            });
+
+            let imgWrap = document.querySelector('.img');
+            let img1 = document.querySelector('.img1');
+            let img2 = document.querySelector('.img2');
+
+            let tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.skil',
+                    scrub: 1,
+                    markers: true,
+                    start: '50% center',
+                    end: 'bottom top',
+                },
+            });
+
+            tl.to(imgWrap, {
+                x: '-70vw',
+                duration: 3,
+                onUpdate: function () {
+                    gsap.to(imgWrap, {
+                        y: 50,
+                        duration: 1,
+                        yoyo: true,
+                        repeat: -1,
+                        ease: 'power1.inOut',
+                    });
+                },
+
+                onComplete: function () {
+                    gsap.to(img1, {
+                        display: 'none',
+                    });
+                    gsap.to(img2, {
+                        display: 'block',
+                    });
                 },
             });
         },
@@ -73,6 +119,33 @@ export default {
         display: flex;
         align-items: center;
         padding: 30px 30vw;
+        position: relative;
+
+        .img {
+            position: absolute;
+            width: 40vw;
+            aspect-ratio: 1/1;
+            bottom: 0;
+            right: 0;
+            &_wrap {
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                img {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: block;
+
+                    &.img2 {
+                        display: none;
+                    }
+                }
+            }
+        }
     }
 
     &_list {
