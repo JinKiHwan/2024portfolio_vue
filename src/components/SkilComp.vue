@@ -18,6 +18,56 @@
             <div class="phantom">
                 <img src="../assets/img/phantom.png" alt="" />
             </div>
+
+            <div class="pokemon_ui">
+                <div class="pokemon_ui_wrap">
+                    <div class="ancor_left_top">
+                        <span></span>
+                    </div>
+                    <div class="ancor_right_top">
+                        <span></span>
+                    </div>
+                    <div class="ancor_left_bottom">
+                        <span></span>
+                    </div>
+                    <div class="ancor_right_bottom">
+                        <span></span>
+                    </div>
+
+                    <div class="pokemon_left">
+                        <p>KIHWAN은 무엇을 할까?</p>
+                    </div>
+                    <div class="pokemon_right">
+                        <ul>
+                            <li>
+                                <span><img src="../assets/img/dot_arrow.png" alt="" /></span> 배우기
+                            </li>
+                            <li>
+                                <span><img src="../assets/img/dot_arrow.png" alt="" /></span> 가방
+                            </li>
+                            <li>
+                                <span><img src="../assets/img/dot_arrow.png" alt="" /></span> 포켓몬
+                            </li>
+                            <li>
+                                <span><img src="../assets/img/dot_arrow.png" alt="" /></span> 도망치다
+                            </li>
+                        </ul>
+
+                        <div class="ancor_left_top">
+                            <span></span>
+                        </div>
+                        <div class="ancor_right_top">
+                            <span></span>
+                        </div>
+                        <div class="ancor_left_bottom">
+                            <span></span>
+                        </div>
+                        <div class="ancor_right_bottom">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -104,32 +154,6 @@ export default {
         position: relative;
         overflow: hidden;
 
-        /* .img {
-            position: absolute;
-            width: 40vw;
-            aspect-ratio: 1/1;
-            bottom: 0;
-            right: 0;
-            &_wrap {
-                position: relative;
-                width: 100%;
-                height: 100%;
-
-                img {
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    height: 100%;
-                    display: block;
-
-                    &.img2 {
-                        display: none;
-                    }
-                }
-            }
-        } */
-
         .phantom {
             position: absolute;
             z-index: -1;
@@ -152,6 +176,7 @@ export default {
             perspective: 1500px;
             transition: transform 0.2s;
             transform-style: preserve-3d;
+            font-family: 'gsc';
 
             .front {
                 position: absolute;
@@ -195,6 +220,126 @@ export default {
                     transform: rotateY(180deg);
                     .front {
                         opacity: 0;
+                    }
+                }
+            }
+        }
+    }
+
+    .pokemon_ui {
+        position: absolute;
+        width: 100%;
+        height: 30vh;
+        left: 0;
+        bottom: 0;
+        background: #fff;
+        padding: 0.5vw;
+        &_wrap {
+            border: 0.5vw solid #020401;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            font-family: 'gsc';
+            display: flex;
+
+            .pokemon_left {
+                width: 65%;
+                height: 100%;
+                display: flex;
+                padding: 2vw;
+                font-size: 3.5vw;
+                letter-spacing: -0.1vw;
+            }
+            .pokemon_right {
+                width: calc(35% - 1vw);
+                margin: 0.5vw;
+                border: 0.5vw solid #020401;
+                box-sizing: border-box;
+                font-size: 3.5vw;
+                position: relative;
+
+                ul {
+                    display: flex;
+                    flex-wrap: wrap;
+                    height: 100%;
+
+                    li {
+                        width: 50%;
+                        display: flex;
+                        align-items: center;
+                        padding-left: 1vw;
+                        &:nth-child(1) {
+                            span {
+                                opacity: 1;
+                            }
+                        }
+
+                        span {
+                            opacity: 0;
+                            margin-top: 1vw;
+                            margin-right: 0.5vw;
+                            height: 2.5vw;
+                            img {
+                                height: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .ancor_left_top {
+                span {
+                    &:nth-child(1) {
+                        display: block;
+                        position: absolute;
+                        left: -0.5vw;
+                        top: -0.5vw;
+                        width: 0.5vw;
+                        aspect-ratio: 1/1;
+                        z-index: 3;
+                        background: #fff;
+                    }
+                }
+            }
+            .ancor_right_top {
+                span {
+                    &:nth-child(1) {
+                        display: block;
+                        position: absolute;
+                        right: -0.5vw;
+                        top: -0.5vw;
+                        width: 0.5vw;
+                        aspect-ratio: 1/1;
+                        z-index: 3;
+                        background: #fff;
+                    }
+                }
+            }
+            .ancor_left_bottom {
+                span {
+                    &:nth-child(1) {
+                        display: block;
+                        position: absolute;
+                        left: -0.5vw;
+                        bottom: -0.5vw;
+                        width: 0.5vw;
+                        aspect-ratio: 1/1;
+                        z-index: 3;
+                        background: #fff;
+                    }
+                }
+            }
+            .ancor_right_bottom {
+                span {
+                    &:nth-child(1) {
+                        display: block;
+                        position: absolute;
+                        right: -0.5vw;
+                        bottom: -0.5vw;
+                        width: 0.5vw;
+                        aspect-ratio: 1/1;
+                        z-index: 3;
+                        background: #fff;
                     }
                 }
             }

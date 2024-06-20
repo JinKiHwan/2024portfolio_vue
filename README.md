@@ -36,3 +36,5 @@ npm i sass
 npm i sass-loader@10
 
 npm install gsap
+
+npm install vue-meta --save
