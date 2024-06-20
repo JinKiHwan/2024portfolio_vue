@@ -96,6 +96,7 @@ export default {
     mounted: function () {
         this.scrollAnimation();
         //this.skilWrap();
+        this.skilArrow();
     },
 
     methods: {
@@ -117,26 +118,16 @@ export default {
                 },
             });
         },
-        // skilWrap() {
-        //     let skilWrap = gsap.utils.toArray('.skil_wrap');
 
-        //     gsap.set(skilWrap, {
-        //         scale: 0,
-        //         transformOrigin: 'right bottom',
-        //     });
-
-        //     gsap.to(skilWrap, {
-        //         scale: 1,
-        //         scrollTrigger: {
-        //             scrub: true,
-        //             trigger: '.skil',
-        //             markers: true,
-        //             start: '70% center',
-        //             end: '100% top',
-        //         },
-        //     });
-        //     console.log(skilWrap);
-        // },
+        skilArrow() {
+            let arrow1 = document.querySelector('.pokemon_right li:nth-child(1) span');
+            gsap.from(arrow1, {
+                opacity: 0,
+                duration: 1,
+                repeat: -1,
+                ease: 'steps(1)',
+            });
+        },
     },
 };
 </script>
