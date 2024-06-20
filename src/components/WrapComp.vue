@@ -2,7 +2,7 @@
     <HeaderComp></HeaderComp>
     <MainComp></MainComp>
     <PortComp></PortComp>
-    <SkilComp></SkilComp>
+    <PokemonComp></PokemonComp>
     <MainComp></MainComp>
     <div class="sticker-box" ref="stickerBox">
         <img src="../assets/img/figma.png" alt="" />
@@ -19,7 +19,7 @@ import { ref, onMounted } from 'vue';
 import HeaderComp from './HeaderComp.vue';
 import MainComp from './MainComp.vue';
 import PortComp from './PortfolioComp.vue';
-import SkilComp from './SkilComp.vue';
+import PokemonComp from './PokemonComp.vue';
 
 export default {
     name: 'WrapComp',
@@ -27,7 +27,7 @@ export default {
         HeaderComp,
         MainComp,
         PortComp,
-        SkilComp,
+        PokemonComp,
     },
     setup() {
         const stickerBox = ref(null);
