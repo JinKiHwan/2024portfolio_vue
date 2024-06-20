@@ -169,7 +169,7 @@ export default {
         padding: 0.5vw;
         &_wrap {
             border: 0.5vw solid #020401;
-            width: 100%;
+            width: calc(100% - 1vw);
             height: 100%;
             position: relative;
             font-family: 'gsc';
@@ -184,8 +184,9 @@ export default {
                 letter-spacing: -0.1vw;
             }
             .pokemon_right {
-                width: calc(35% - 1vw);
+                width: calc(35% - 1.5vw);
                 margin: 0.5vw;
+                margin-left: 0;
                 border: 0.5vw solid #020401;
                 box-sizing: border-box;
                 font-size: 3.5vw;
