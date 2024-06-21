@@ -36,7 +36,7 @@
                     </div>
                     <div class="pokemon_right">
                         <ul>
-                            <li v-for="(item, index) in items" :key="index" :class="{ active: activeIndex === index }" @mouseover="setActive(index)" @click="index === 0 ? animate() : null">
+                            <li v-for="(item, index) in items" :key="index" :class="{ active: activeIndex === index }" @mouseover="setActive(index)" @click="handleItemClick(index)">
                                 <span><img src="../assets/img/dot_arrow.png" alt="" /></span>
                                 {{ item }}
                             </li>
@@ -110,10 +110,11 @@ export default {
                     '<'
                 )
                 .to(monsterball.value, {
+                    delay: 0.7,
                     filter: 'saturate(0.5)',
                     x: 30,
                     duration: 1,
-                    repeat: 3,
+                    repeat: 2,
                     ease: 'elastic.out(1.15,0.2)',
                     transformOrigin: 'center bottom',
                 })
@@ -121,6 +122,14 @@ export default {
                     filter: 'none',
                     duration: 0,
                 });
+        };
+
+        const handleItemClick = (index) => {
+            if (index === 0) {
+                animate();
+            } else if (index === 3) {
+                document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+            }
         };
 
         onMounted(() => {
@@ -184,6 +193,7 @@ export default {
             animate,
             monsterball,
             react,
+            handleItemClick,
         };
     },
 };
