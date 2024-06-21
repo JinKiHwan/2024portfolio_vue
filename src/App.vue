@@ -15,7 +15,6 @@ export default {
 
 <style lang="scss">
 #app {
-    //height: 300vh;
     position: relative;
     background: #0e100f;
 

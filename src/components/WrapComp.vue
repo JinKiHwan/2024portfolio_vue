@@ -38,11 +38,15 @@ export default {
 
             images.forEach((img) => {
                 img.style.position = 'absolute';
+                img.style.cursor = 'grab';
+
                 console.log('Setting up drag for image:', img);
 
                 img.addEventListener('mousedown', (e) => {
                     e.preventDefault(); // Prevent text selection or other unwanted behavior
-                    console.log('Mouse down on image:', img);
+                    //console.log('Mouse down on image:', img);
+                    img.style.cursor = 'grabbing';
+
                     const offsetX = e.pageX - img.getBoundingClientRect().left - window.scrollX;
                     const offsetY = e.pageY - img.getBoundingClientRect().top - window.scrollY;
 
@@ -54,6 +58,7 @@ export default {
 
                     const onMouseUp = () => {
                         console.log('Mouse up');
+                        img.style.cursor = 'grab';
                         document.removeEventListener('mousemove', onMouseMove);
                         document.removeEventListener('mouseup', onMouseUp);
                     };
@@ -79,7 +84,7 @@ export default {
 <style lang="scss">
 .sticker-box img {
     position: absolute;
-    cursor: move;
+    cursor: grab;
 
     &:nth-child(1) {
         width: 17vw;

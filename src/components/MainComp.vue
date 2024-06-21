@@ -2,7 +2,7 @@
     <section class="main_section" id="main">
         <div class="main_section-inner">
             <ul class="main_section-text">
-                <li><span>&#60;</span>dev<i class="e">e</i>l<i class="o"></i>p<i class="e2">e</i>r<span>&#62;</span></li>
+                <li><span>&#60;</span>dev<i class="e">e</i>lo<i class="o"></i>p<i class="e2">e</i>r<span>&#62;</span></li>
                 <li class="publisher"><span>[</span><i>p</i><i>u</i><i>b</i><i>l</i><i>i</i><i>s</i><i>h</i><i>e</i><i>r</i><span>]</span></li>
                 <li class="frontend"><span>&#123;&#123;</span><i>f</i><i>r</i><i>o</i><i>n</i><i>t</i><i>e</i><i>n</i><i>d</i><span>&#125;&#125;</span></li>
                 <li class="design">
@@ -262,6 +262,9 @@ export default {
     overflow: hidden;
     position: relative;
     font-family: 'EF_MACHO';
+    //font-family: 'gsc';
+    //font-family: 'Galmuri11', sans-serif;
+    font-weight: bold;
 
     &-inner {
         width: calc(100% - 20px);
