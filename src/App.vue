@@ -1,15 +1,11 @@
 <template>
-    <WrapComp></WrapComp>
+    <router-view></router-view>
 </template>
 
 <script>
-import WrapComp from './components/WrapComp.vue';
-
 export default {
     name: 'App',
-    components: {
-        WrapComp,
-    },
+    components: {},
 };
 </script>
 
@@ -17,6 +13,7 @@ export default {
 #app {
     position: relative;
     background: #0e100f;
+    min-height: 100vh;
 
     &::after {
         content: '';
