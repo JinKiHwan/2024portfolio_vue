@@ -2,21 +2,66 @@
     <section class="login">
         <div class="login_wrap">
             <h3>LOGIN</h3>
-            <form action="">
+            <div class="form">
                 <ul>
                     <li>
-                        <input type="text" placeholder="Please enter your ID" />
+                        <input type="text" placeholder="Please enter your ID" v-model="state.form.username" />
                     </li>
-                    <li><input type="password" placeholder="Please enter your Password" /></li>
+                    <li><input type="password" placeholder="Please enter your Password" v-model="state.form.password" /></li>
                 </ul>
-                <button type="submit" class="submit">Yammy</button>
-            </form>
+                <button class="submit" @click="submit">Yammy</button>
+            </div>
         </div>
     </section>
 </template>
 
 <script>
-export default {};
+import axios from 'axios';
+import { reactive } from 'vue';
+
+export default {
+    name: 'LoginComp',
+    components: {},
+    setup() {
+        const state = reactive({
+            form: {
+                username: '',
+                password: '',
+            },
+        });
+        const submit = () => {
+            const loginObj = {
+                username: state.form.username,
+                password: state.form.password,
+            };
+            axios.post('/api/authenticate', loginObj).then((res) => {
+                console.log(res);
+                alert('로그인 성공');
+                let token = res.data.token;
+                localStorage.setItem('token', token);
+                let config = {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                };
+                axios
+                    .get('/api/user/admin', config)
+                    .then((response) => {
+                        console.log(response);
+                        let userInfo = {
+                            nickname: response.data.nickname,
+                            username: response.data.username,
+                        };
+                        console.log(userInfo);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            });
+        };
+        return { state, submit };
+    },
+};
 </script>
 
 <style lang="scss">
@@ -48,7 +93,7 @@ export default {};
             margin-bottom: 30px;
             color: #00000077;
         }
-        form {
+        .form {
             width: 100%;
             max-width: 500px;
             display: flex;

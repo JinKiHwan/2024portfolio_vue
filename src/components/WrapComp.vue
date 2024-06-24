@@ -36,13 +36,13 @@ export default {
 
         const makeImagesDraggable = () => {
             const images = stickerBox.value.querySelectorAll('img');
-            console.log('Images:', images);
+            // console.log('Images:', images);
 
             images.forEach((img) => {
                 img.style.position = 'absolute';
                 img.style.cursor = 'grab';
 
-                console.log('Setting up drag for image:', img);
+                //console.log('Setting up drag for image:', img);
 
                 img.addEventListener('mousedown', (e) => {
                     e.preventDefault(); // Prevent text selection or other unwanted behavior
@@ -53,13 +53,13 @@ export default {
                     const offsetY = e.pageY - img.getBoundingClientRect().top - window.scrollY;
 
                     const onMouseMove = (e) => {
-                        console.log('Mouse move');
+                        //console.log('Mouse move');
                         img.style.left = `${e.pageX - offsetX}px`;
                         img.style.top = `${e.pageY - offsetY}px`;
                     };
 
                     const onMouseUp = () => {
-                        console.log('Mouse up');
+                        //console.log('Mouse up');
                         img.style.cursor = 'grab';
                         document.removeEventListener('mousemove', onMouseMove);
                         document.removeEventListener('mouseup', onMouseUp);
@@ -72,7 +72,7 @@ export default {
         };
 
         onMounted(() => {
-            console.log('Component mounted');
+            //console.log('Component mounted');
             makeImagesDraggable();
         });
 

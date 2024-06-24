@@ -22,4 +22,11 @@ module.exports = defineConfig({
             directory: path.join(__dirname, ''), // 설정하면 url(/src/assets") 경로 사용 가능
         },
     },
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+            },
+        },
+    },
 });
