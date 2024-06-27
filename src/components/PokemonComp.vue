@@ -2,11 +2,11 @@
     <section class="pokemon" id="pokemon">
         <div class="pokemon_inner">
             <div class="pokemon_stage">
-                <figure class="monster" style="display: flex">
-                    <img src="../assets/img/pokemon-react2.png" alt="" class="react" ref="react" />
-                    <img src="../assets/img/pokemon-vue2.png" alt="" class="vue" />
-                    <img src="../assets/img/pokemon-html2.png" alt="" class="html" />
-                    <img src="../assets/img/ghost.png" alt="" class="ghost" />
+                <figure class="monster">
+                    <div class="monster_wrap">
+                        <img src="../assets/img/pokemon-react2.png" alt="" class="react" ref="react" />
+                        <img src="../assets/img/pokemon-vue2.png" alt="" class="vue" ref="vue" />
+                    </div>
                 </figure>
                 <figure class="char">
                     <img src="../assets/img/pokemon_char.png" alt="" />
@@ -36,9 +36,21 @@
                     </div>
                     <div class="pokemon_right">
                         <ul>
-                            <li v-for="(item, index) in items" :key="index" :class="{ active: activeIndex === index }" @mouseover="setActive(index)" @click="handleItemClick(index)">
+                            <li>
                                 <span><img src="../assets/img/dot_arrow.png" alt="" /></span>
-                                {{ item }}
+                                배운다
+                            </li>
+                            <li>
+                                <span><img src="../assets/img/dot_arrow.png" alt="" /></span>
+                                가방
+                            </li>
+                            <li>
+                                <span><img src="../assets/img/dot_arrow.png" alt="" /></span>
+                                포켓몬
+                            </li>
+                            <li>
+                                <span><img src="../assets/img/dot_arrow.png" alt="" /></span>
+                                도망친다
                             </li>
                         </ul>
 
@@ -72,88 +84,12 @@ export default {
     name: 'PokemonComp',
 
     setup() {
-        const items = ref(['배운다', '가방', '포켓몬', '도망치다']);
-        const activeIndex = ref(0);
         const monsterball = ref(null);
         const react = ref(null);
-        //const react = document.querySelectorAll('.monster .react');
-
-        const setActive = (index) => {
-            activeIndex.value = index;
-        };
-
-        const animate = () => {
-            gsap.set(monsterball.value, {
-                opacity: 0,
-            });
-            const monsterballAni = gsap.timeline();
-            monsterballAni
-                .to(monsterball.value, {
-                    duration: 0.1,
-                    opacity: 1,
-                })
-                .to(monsterball.value, {
-                    duration: 1,
-                    y: '10vw',
-                    yoyo: true,
-                    ease: 'bounce.out',
-                })
-                .to(
-                    react.value,
-                    {
-                        duration: 0.1,
-                        scale: 0,
-                        opacity: 0,
-                        delay: 0.3,
-                        filter: 'saturate(0.5)',
-                    },
-                    '<'
-                )
-                .to(monsterball.value, {
-                    delay: 0.7,
-                    filter: 'saturate(0.5)',
-                    x: 30,
-                    duration: 1,
-                    repeat: 2,
-                    ease: 'elastic.out(1.15,0.2)',
-                    transformOrigin: 'center bottom',
-                })
-                .to(monsterball.value, {
-                    filter: 'none',
-                    duration: 0,
-                });
-        };
-
-        const handleItemClick = (index) => {
-            if (index === 0) {
-                animate();
-            } else if (index === 3) {
-                document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
-            }
-        };
+        const vue = ref(null);
 
         onMounted(() => {
-            const monsterImages = gsap.utils.toArray('.monster img');
-            const react = document.querySelector('.monster .react');
-            const pokemonUi = document.querySelector('.pokemon_ui');
-            const pokemonChar = document.querySelector('.char');
-            const monsterball = document.querySelector('.monsterball');
-
-            gsap.set(monsterball, {
-                opacity: 0,
-            });
-
-            gsap.set(monsterImages, {
-                opacity: 0,
-                x: '3vw',
-            });
-            gsap.set([pokemonUi, pokemonChar], {
-                y: '5vw',
-                opacity: 0,
-            });
-
-            gsap.to(monsterImages, {
-                ease: 'none',
+            const tl = gsap.timeline({
                 scrollTrigger: {
                     trigger: '.pokemon',
                     pin: '.pokemon',
@@ -162,38 +98,27 @@ export default {
                     end: '+=2000',
                 },
             });
-
-            gsap.to(react, {
-                delay: 0.5,
-                opacity: 1,
-                x: '0',
-                scrollTrigger: {
-                    trigger: '.pokemon',
-                    start: 'center bottom',
-                    end: 'center top',
-                },
-            });
-
-            gsap.to([pokemonUi, pokemonChar], {
-                y: '0',
-                opacity: 1,
-                stagger: 0.5,
-                scrollTrigger: {
-                    trigger: '.pokemon',
-                    start: 'center bottom',
-                    end: 'center top',
-                },
-            });
+            tl.set(monsterball.value, {
+                opacity: 0,
+            })
+                .set([react.value, vue.value], {
+                    x: 100,
+                    opacity: 0,
+                })
+                .to(react.value, {
+                    x: 0,
+                    opacity: 1,
+                })
+                .to(monsterball.value, {
+                    opacity: 1,
+                    y: '10vw',
+                });
         });
 
         return {
-            items,
-            activeIndex,
-            setActive,
-            animate,
             monsterball,
             react,
-            handleItemClick,
+            vue,
         };
     },
 };
@@ -238,9 +163,19 @@ export default {
             right: 15vw;
             top: 3vw;
             z-index: 5;
+
+            &_wrap {
+                width: 100%;
+                position: relative;
+            }
+
             img {
                 width: 100%;
                 object-fit: contain;
+                position: absolute;
+                left: 0;
+                top: 0;
+                display: block;
             }
         }
     }
