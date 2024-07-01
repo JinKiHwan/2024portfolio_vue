@@ -95,6 +95,7 @@ export default {
         onMounted(() => {
             gsap.from('.portfolio_list>li', {
                 opacity: 0,
+                x: -500,
                 y: 300,
                 stagger: 0.15,
                 scrollTrigger: {
@@ -114,6 +115,22 @@ export default {
     min-height: 100vh;
     height: auto;
     padding-top: 15vw;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+        content: '';
+        width: 100%;
+        height: 250px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        display: block;
+        background: #0e100f;
+        box-shadow: 0 -5px 10px rgba($color: #fff, $alpha: 0.2);
+    }
+
     &_inner {
         width: 100%;
     }
