@@ -25,17 +25,17 @@ export default {
         // 퀴즈 문제 배열
         // 주의: 이미지 경로를 적절히 수정하세요. 예: '/assets/images/image1.jpg'
         const questions = ref([
-            { image: '/src/assets/img/해린.jpg', answer: '해린' },
-            { image: '/src/assets/img/하니.jpg', answer: '하니' },
-            { image: '/src/assets/img/다니엘.png', answer: '다니엘' },
-            { image: '/src/assets/img/민지.png', answer: '민지' },
-            { image: '/src/assets/img/혜인.png', answer: '혜인' },
-            { image: '/src/assets/img/고무고무바주카.png', answer: '고무고무바주카' },
-            { image: '/src/assets/img/기욤뮈소.png', answer: '기욤뮈소' },
-            { image: '/src/assets/img/민희진.png', answer: '민희진' },
-            { image: '/src/assets/img/방시혁.png', answer: '방시혁' },
-            { image: '/src/assets/img/안드로메다.png', answer: '안드로메다' },
-            { image: '/src/assets/img/전현무.png', answer: '전현무' },
+            { image: '/./src/assets/img/해린.jpg', answer: '해린' },
+            { image: '/./src/assets/img/하니.jpg', answer: '하니' },
+            { image: '/./src/assets/img/다니엘.png', answer: '다니엘' },
+            { image: '/./src/assets/img/민지.png', answer: '민지' },
+            { image: '/./src/assets/img/혜인.png', answer: '혜인' },
+            { image: '/./src/assets/img/고무고무바주카.png', answer: '고무고무바주카' },
+            { image: '/./src/assets/img/기욤뮈소.png', answer: '기욤뮈소' },
+            { image: '/./src/assets/img/민희진.png', answer: '민희진' },
+            { image: '/./src/assets/img/방시혁.png', answer: '방시혁' },
+            { image: '/./src/assets/img/안드로메다.png', answer: '안드로메다' },
+            { image: '/./src/assets/img/전현무.png', answer: '전현무' },
             // 더 많은 문제를 추가하세요
         ]);
 
@@ -50,8 +50,8 @@ export default {
 
         const finalMessage = computed(() => {
             if (score.value === 10) return '당신은 멘사인가요?';
-            if (score.value >= 6) return '축하합니다!';
-            if (score.value >= 3) return '아쉽네요.';
+            if (score.value >= 6) return '오.. 많이 맞추셨네요?';
+            if (score.value >= 3) return '노력하세요...';
             return '다음에 더 잘할 수 있을 거예요!';
         });
 
