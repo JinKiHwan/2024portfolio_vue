@@ -36,6 +36,13 @@ export default {
             { image: '/img/방시혁.png', answer: '방시혁' },
             { image: '/img/안드로메다.png', answer: '안드로메다' },
             { image: '/img/전현무.png', answer: '전현무' },
+            { image: '/img/바늘 도둑이 소도둑 된다.png', answer: '바늘 도둑이 소도둑 된다' },
+            { image: '/img/여름 감기는 개도 안 걸린다.png', answer: '여름 감기는 개도 안 걸린다' },
+            { image: '/img/돌다리도 두드려 보고 건너라.png', answer: '돌다리도 두드려 보고 건너라' },
+            { image: '/img/소 잃고 외양간 고친다.png', answer: '소 잃고 외양간 고친다' },
+            { image: '/img/서당개 3년이면 풍월을 읊는다.png', answer: '서당개 3년이면 풍월을 읊는다' },
+            { image: '/img/말 한마디에 천 냥 빚을 갚는다.png', answer: '말 한마디에 천 냥 빚을 갚는다' },
+            { image: '/img/불난 집에 부채질한다.png', answer: '불난 집에 부채질한다' },
         ]);
 
         const shuffledQuestions = ref([]);
