@@ -43,6 +43,7 @@ export default {
             { image: '/img/서당개 3년이면 풍월을 읊는다.png', answer: '서당개 3년이면 풍월을 읊는다' },
             { image: '/img/말 한마디에 천 냥 빚을 갚는다.png', answer: '말 한마디에 천 냥 빚을 갚는다' },
             { image: '/img/불난 집에 부채질한다.png', answer: '불난 집에 부채질한다' },
+            { image: '/img/최애의아이.png', answer: '최애의아이' },
         ]);
 
         const shuffledQuestions = ref([]);
@@ -84,7 +85,7 @@ export default {
             } else {
                 setTimeout(() => {
                     resultMessage.value = '';
-                }, 2000); // 시간을 2초로 늘렸습니다. 사용자가 정답을 읽을 시간을 더 주기 위함입니다.
+                }, 5000); // 시간을 2초로 늘렸습니다. 사용자가 정답을 읽을 시간을 더 주기 위함입니다.
             }
         }
 
