@@ -25,17 +25,18 @@ export default {
         // 퀴즈 문제 배열
         // 주의: 이미지 경로를 적절히 수정하세요. 예: '/assets/images/image1.jpg'
         const questions = ref([
-            { image: '../assets/img/해린.jpg', answer: '해린' },
-            { image: '../assets/img/하니.jpg', answer: '하니' },
-            { image: '../assets/img/다니엘.png', answer: '다니엘' },
-            { image: '../assets/img/민지.png', answer: '민지' },
-            { image: '../assets/img/혜인.png', answer: '혜인' },
-            { image: '../assets/img/고무고무바주카.png', answer: '고무고무바주카' },
-            { image: '../assets/img/기욤뮈소.png', answer: '기욤뮈소' },
-            { image: '../assets/img/민희진.png', answer: '민희진' },
-            { image: '../assets/img/방시혁.png', answer: '방시혁' },
-            { image: '../assets/img/안드로메다.png', answer: '안드로메다' },
-            { image: '../assets/img/전현무.png', answer: '전현무' },
+            // { image: '../assets/img/해린.jpg', answer: '해린' },
+            // { image: '../assets/img/하니.jpg', answer: '하니' },
+            // { image: '../assets/img/다니엘.png', answer: '다니엘' },
+            // { image: '../assets/img/민지.png', answer: '민지' },
+            // { image: '../assets/img/혜인.png', answer: '혜인' },
+            // { image: '../assets/img/고무고무바주카.png', answer: '고무고무바주카' },
+            // { image: '../assets/img/기욤뮈소.png', answer: '기욤뮈소' },
+            // { image: '../assets/img/민희진.png', answer: '민희진' },
+            // { image: '../assets/img/방시혁.png', answer: '방시혁' },
+            // { image: '../assets/img/안드로메다.png', answer: '안드로메다' },
+            // { image: '../assets/img/전현무.png', answer: '전현무' },
+            { image: '../assets/img/figma.png', answer: '피그마' },
             // 더 많은 문제를 추가하세요
         ]);
 
