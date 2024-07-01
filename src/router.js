@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Main from './components/WrapComp.vue';
 import Login from './components/LoginComp.vue';
+import Quiz from './components/QuizComp.vue';
 
 const routes = [
     {
@@ -27,6 +28,24 @@ const routes = [
         component: Login,
         meta: {
             title: 'Kihwan Portfolio',
+            metaTags: [
+                {
+                    name: '게임덱스 웹서비스팀 개발파트 진기환',
+                    content: 'The home page of our example app.',
+                },
+                {
+                    property: 'og:description',
+                    content: 'The home page of our example app.',
+                },
+            ],
+        },
+    },
+    {
+        path: '/quiz',
+        name: 'Quiz',
+        component: Quiz,
+        meta: {
+            title: '퀴즈쇼',
             metaTags: [
                 {
                     name: '게임덱스 웹서비스팀 개발파트 진기환',

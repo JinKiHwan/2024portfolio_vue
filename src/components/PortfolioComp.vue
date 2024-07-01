@@ -2,8 +2,8 @@
     <section class="portfolio" id="portfolio">
         <div class="portfolio_inner">
             <ul class="portfolio_list">
-                <li v-for="(portfolio, index) in portfolios" :key="index">
-                    <a href="#!">
+                <li v-for="(portfolio, idx) in portfolios" :key="idx">
+                    <div>
                         <ul class="bedge_list">
                             <li class="bedge year">{{ portfolio.year }}</li>
                             <li class="bedge respon">{{ portfolio.type }}</li>
@@ -13,7 +13,7 @@
                             <div class="portfolio_info">
                                 <h3>{{ portfolio.title }}</h3>
                                 <ul class="portfolio_skil">
-                                    <li v-for="(skill, skillIndex) in portfolio.skills" :key="skillIndex">{{ skill }}</li>
+                                    <li>#GSAP</li>
                                 </ul>
                             </div>
 
@@ -24,7 +24,7 @@
                                 <img src="../assets/img/link_arrow.png" alt="" />
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -32,6 +32,11 @@
 </template>
 
 <script>
+import { onMounted } from 'vue';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
 export default {
     name: 'PortfolioComp',
     data() {
@@ -85,6 +90,23 @@ export default {
             ],
         };
     },
+
+    setup() {
+        onMounted(() => {
+            gsap.from('.portfolio_list>li', {
+                opacity: 0,
+                x: -500,
+                y: 300,
+                stagger: 0.15,
+                scrollTrigger: {
+                    trigger: '.portfolio_list',
+                    start: 'top center',
+                    end: 'top top',
+                    //markers: true,
+                },
+            });
+        });
+    },
 };
 </script>
 
@@ -92,46 +114,61 @@ export default {
 .portfolio {
     min-height: 100vh;
     height: auto;
-    //padding-top: 5vw;
+    padding-top: 15vw;
+    overflow: hidden;
+    position: relative;
+
+    &::after {
+        content: '';
+        width: 100%;
+        height: 250px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+        display: block;
+        background: #0e100f;
+        box-shadow: 0 -5px 10px rgba($color: #fff, $alpha: 0.2);
+    }
+
     &_inner {
         width: 100%;
     }
     &_list {
+        width: 100%;
+        padding: 0 100px;
+        display: flex;
+        flex-direction: column;
         > li {
-            width: 100%;
-            min-height: 200px;
-            padding: 30px;
-            background: #0e100f;
-            border-bottom: 1px solid #fffce1;
-            position: sticky;
-            top: 0;
-            box-shadow: 0 0 10px rgba($color: #fffce1, $alpha: 0.3);
-            &:before {
-                content: '';
+            position: relative;
+            perspective: 700px;
+
+            > div {
+                background: #222;
+
                 width: 100%;
-                height: 100%;
-                display: block;
-                position: absolute;
-                left: 0;
-                top: 0;
-                background: linear-gradient(180deg, rgba(170, 254, 132, 1) 20%, rgba(27, 194, 208, 1) 100%);
-                transform: scaleY(0);
-                transform-origin: center center;
-                transition: all 0.3s;
-            }
-            > a {
-                position: relative;
+                height: 530px;
+                padding: 30px;
+                box-shadow: 0 -15px 32px rgba(0, 0, 0, 0.25);
+                box-sizing: border-box;
+                transform-style: preserve-3d;
+                transform: rotateX(-10deg) translateZ(-5px);
+                transition: color 0.6s, background-color 0.6s, transform 0.6s ease;
+                border-radius: 23px;
+                border-top: 10px solid #000;
             }
 
             &:hover {
-                &::before {
-                    transform: scaleY(1);
-                }
-                .portfolio_shortcut {
-                    width: 80px;
-                    transform: scale(1);
+                > div {
+                    color: #222;
+                    background: #2d4425;
+                    transform: rotateX(-5deg) translateZ(-5px) translateY(-120px);
                 }
             }
+        }
+
+        > li + li {
+            margin-top: -350px;
         }
 
         .bedge_list {
