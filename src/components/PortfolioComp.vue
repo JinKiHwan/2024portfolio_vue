@@ -17,11 +17,13 @@
                                 </ul>
                             </div>
 
-                            <div class="portfolio_logo">
-                                <img src="../assets/img/logo.webp" alt="쿠키런 브레이버스" />
-                            </div>
-                            <div class="portfolio_shortcut">
-                                <img src="../assets/img/link_arrow.png" alt="" />
+                            <div class="portfolio_right">
+                                <div class="portfolio_logo">
+                                    <img src="../assets/img/logo.webp" alt="쿠키런 브레이버스" />
+                                </div>
+                                <div class="portfolio_shortcut">
+                                    <a href="#!">바로가기</a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -216,18 +218,20 @@ export default {
         justify-content: space-between;
         align-self: flex-start;
     }
-    &_logo {
+    &_right {
         margin-left: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    &_logo {
         max-width: 150px;
     }
 
     &_shortcut {
         margin-left: 2vw;
-        width: 0;
-        max-width: 80px;
-        transform: scale(0);
-        transition: all 0.3s;
         transform-origin: center;
+        color: #fff;
     }
 }
 </style>

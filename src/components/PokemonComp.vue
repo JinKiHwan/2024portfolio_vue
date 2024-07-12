@@ -6,6 +6,7 @@
                     <div class="monster_wrap">
                         <img src="../assets/img/pokemon-react2.png" alt="" class="react" ref="react" />
                         <img src="../assets/img/pokemon-vue2.png" alt="" class="vue" ref="vue" />
+                        <img src="../assets/img/greensock.png" alt="" class="greensock" ref="greensock" />
                     </div>
                 </figure>
                 <figure class="char">
@@ -36,7 +37,7 @@
                     </div>
                     <div class="pokemon_right">
                         <ul>
-                            <li>
+                            <li class="active">
                                 <span><img src="../assets/img/dot_arrow.png" alt="" /></span>
                                 배운다
                             </li>
@@ -85,8 +86,22 @@ export default {
 
     setup() {
         const monsterball = ref(null);
-        const react = ref(null);
-        const vue = ref(null);
+        const elements = {
+            react: ref(null),
+            vue: ref(null),
+            greensock: ref(null),
+        };
+
+        const animateElement = (tl, element, monsterball) => {
+            tl.to(element, { x: 0, opacity: 1 })
+                .to(monsterball, { opacity: 1, y: '10vw' })
+                .to(element, { scale: 1.3 })
+                .to(element, { scale: 0 })
+                .to(monsterball, { rotate: 15, transformOrigin: 'center bottom' })
+                .to(monsterball, { rotate: -15, transformOrigin: 'center bottom' })
+                .to(monsterball, { rotate: 0, filter: 'grayscale(0)' })
+                .set(monsterball, { opacity: 0, y: 0, filter: 'grayscale(1)' });
+        };
 
         onMounted(() => {
             const tl = gsap.timeline({
@@ -94,31 +109,21 @@ export default {
                     trigger: '.pokemon',
                     pin: '.pokemon',
                     pinSpacing: true,
-                    scrub: 1,
-                    end: '+=2000',
+                    scrub: 3,
+                    end: '+=12000',
                 },
             });
-            tl.set(monsterball.value, {
-                opacity: 0,
-            })
-                .set([react.value, vue.value], {
-                    x: 100,
-                    opacity: 0,
-                })
-                .to(react.value, {
-                    x: 0,
-                    opacity: 1,
-                })
-                .to(monsterball.value, {
-                    opacity: 1,
-                    y: '10vw',
-                });
+
+            tl.set(monsterball.value, { opacity: 0, filter: 'grayscale(1)' }).set(Object.values(elements), { x: 100, opacity: 0 });
+
+            Object.values(elements).forEach((element) => {
+                animateElement(tl, element.value, monsterball.value);
+            });
         });
 
         return {
             monsterball,
-            react,
-            vue,
+            ...elements,
         };
     },
 };
@@ -176,6 +181,7 @@ export default {
                 left: 0;
                 top: 0;
                 display: block;
+                opacity: 0;
             }
         }
     }
