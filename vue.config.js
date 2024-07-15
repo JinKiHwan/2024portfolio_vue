@@ -22,4 +22,19 @@ module.exports = defineConfig({
             directory: path.join(__dirname, ''), // 설정하면 url(/src/assets") 경로 사용 가능
         },
     },
+    icon: {
+        purpose: 'any',
+        source: '/src/assets/img/minji.png',
+    },
+    manifest: {
+        name: 'my Portfolio',
+        short_name: 'my Portfolio',
+        start_url: '/',
+        description: '내 포트폴리오',
+        // display: 'standalone',
+        display: 'fullscreen',
+        theme_color: '#1c86c4',
+        orientation: 'portrait',
+        background_color: '#fff',
+    },
 });

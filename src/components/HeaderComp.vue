@@ -6,7 +6,7 @@
                 <li><a href="#main">Main</a></li>
                 <li><a href="#portfolio">portfolio</a></li>
                 <li><a href="#skil">skil</a></li>
-                <li><a href="#!">Menu4</a></li>
+                <li><a href="/quiz">Quiz</a></li>
             </ul>
         </nav>
     </header>
