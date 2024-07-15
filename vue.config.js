@@ -22,19 +22,35 @@ module.exports = defineConfig({
             directory: path.join(__dirname, ''), // 설정하면 url(/src/assets") 경로 사용 가능
         },
     },
-    icon: {
-        purpose: 'any',
-        source: '/src/assets/img/minji.png',
-    },
-    manifest: {
-        name: 'my Portfolio',
-        short_name: 'my Portfolio',
-        start_url: '/',
-        description: '내 포트폴리오',
-        // display: 'standalone',
-        display: 'fullscreen',
-        theme_color: '#1c86c4',
-        orientation: 'portrait',
-        background_color: '#fff',
+    pwa: {
+        iconPaths: {
+            favicon32: 'src/assets/img/angel.png',
+            favicon16: 'src/assets/img/devil.png',
+            appleTouchIcon: 'src/assets/img/ghost.png',
+            maskIcon: 'src/assets/img/goofy.png',
+            msTileImage: 'src/assets/img/hot.png',
+        },
+        manifestOptions: {
+            name: 'my Portfolio',
+            short_name: 'my Portfolio',
+            start_url: '/',
+            description: '내 포트폴리오',
+            display: 'fullscreen',
+            theme_color: '#1c86c4',
+            orientation: 'portrait',
+            background_color: '#fff',
+            icons: [
+                {
+                    src: 'src/assets/img/minji.png',
+                    sizes: '192x192',
+                    type: 'image/png',
+                },
+                {
+                    src: 'src/assets/img/다니엘.png',
+                    sizes: '512x512',
+                    type: 'image/png',
+                },
+            ],
+        },
     },
 });
